@@ -7,6 +7,12 @@
 -- Language    sql
 -- Status      Accepted
 -- Submitted   2026-07-30, 10:00 a.m.
+-- Technique   substring-sorting-with-secondary-id
+-- Time        O(N log N)
+-- Space       O(N)
+-- Insight     The query filters records by marks and sorts the result set using the last three characters of the name as the primary key and the ID as the secondary key.
+-- Interview   Before: "How would you sort by a suffix?" After: "I use the substring function to extract the last three characters, then apply a multi-column order by clause. This approach runs in O(N log N) time due to the sorting requirement, where N is the number of students meeting the marks threshold."
+-- Pitfalls    (1) Using an incorrect starting index for the substring function which depends on the specific SQL dialect implementation.  (2) Failing to include the ID as a secondary sort key when names share the same last three characters.  (3) Assuming the length of all names is at least three characters, which might cause unexpected behavior if shorter names exist.
 -- ──────────────────────────────────────────────────
 
 
